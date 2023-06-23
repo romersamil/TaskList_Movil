@@ -76,12 +76,14 @@
             android:text="Registrarse"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
+
         <TextView
+            android:id="@+id/GoRestore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Olvide mi contraseña"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:text="Olvide mi contraseña" />
 
     </LinearLayout>
 

@@ -14,9 +14,17 @@ class Login : AppCompatActivity() {
         tvGoRegister.setOnClickListener{
             goToRegister()
         }
+
+        val tvgoRestore = findViewById<TextView>(R.id.GoRestore)
+        tvgoRestore.setOnClickListener{goTorestore()}
     }
     private fun goToRegister() {
         val i = Intent(this, RegisterActivity::class.java)
+        startActivity(i)
+    }
+
+    private fun goTorestore(){
+        val i = Intent(this, RestoreActivity::class.java)
         startActivity(i)
     }
 }
