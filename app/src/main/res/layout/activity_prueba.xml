@@ -5,136 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Prueba"
-    android:background="202732">
+    android:background="202732"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="107dp"
-            android:layout_marginBottom="229dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/imageButton3"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/facebook"
-            tools:ignore="SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/gorjeo" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="229dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/facebook"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextText2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.301"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/programacion" />
-
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
+            android:text="Login"
+            android:fontFamily="@font/butler_regular"
+            android:textSize="60sp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="25dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresa email y contraseña"
+            android:textSize="20sp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="8dp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:hint="Email"
-            android:inputType="text"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-
+            android:background="@drawable/edittext_custom"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="50dp"
+            android:inputType="textEmailAddress"
+            android:textSize="15sp"
+            android:padding="15dp"/>
         <EditText
-            android:id="@+id/editTextTextPassword2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="82dp"
-            android:layout_marginEnd="32dp"
-            android:text="Registrarse"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
-            android:background="@drawable/button_rounded"/>
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:text="Ingresar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
-            android:background="@drawable/button_rounded" />
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="109dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginBottom="229dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/facebook"
-            tools:ignore="MissingConstraints,SpeakableTextPresentCheck"
-            tools:srcCompat="@drawable/google" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:hint="Contraseña"
+            android:background="@drawable/edittext_custom"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="15dp"
+            android:inputType="textPassword"
+            android:textSize="15sp"
+            android:padding="15dp"/>/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginRight="25dp"
+            android:backgroundTint="@color/btn_color"
+            android:text="Iniciar Sesion"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Registrarse" />
+
+    </LinearLayout>
+
+
 </LinearLayout>
+
