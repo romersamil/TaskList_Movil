@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".RestoreActivity"
     android:background="#202732"
     android:orientation="vertical"
     tools:ignore="ExtraText">
@@ -12,15 +12,15 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Olvide mi Contraseña"
         android:fontFamily="@font/butler_regular"
-        android:textSize="60sp"
+        android:textSize="55sp"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="25dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ingresa email y contraseña"
+        android:text="Ingresa el email asociado a tu cuenta"
         android:textSize="20sp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="8dp"/>
@@ -39,19 +39,6 @@
         android:textColorHint="#000000"
         android:textSize="15sp" />/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="25dp"
-        android:background="@drawable/edittext_custom"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        android:textSize="15sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,10 +49,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesion"
+            android:text="Enviar"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="@color/btn_color"
             android:textColor="@color/white"/>
 
@@ -73,15 +60,10 @@
             android:id="@+id/tv_go_to_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
+            android:text="Volver"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Olvide mi contraseña"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+
 
     </LinearLayout>
 
