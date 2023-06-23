@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun config() {
-        val Registrarse_btn = findViewById<Button>(R.id.Registrarse_btn)
+        val Registrarse_btn = findViewById<Button>(R.id.Registrarsebtn)
         val Name_Edit_Text = findViewById<EditText>(R.id.Name_Edit_Text)
         val Email_Edit_Text = findViewById<EditText>(R.id.Email_Edit_Text)
         val Password_Edit_Text = findViewById<EditText>(R.id.Password_Edit_Text)
