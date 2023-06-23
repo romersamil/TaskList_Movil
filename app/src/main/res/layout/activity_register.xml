@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".RegisterActivity"
     android:background="202732"
     android:orientation="vertical"
     tools:ignore="ExtraText">
@@ -12,18 +12,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Registro"
         android:fontFamily="@font/butler_regular"
         android:textSize="60sp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="25dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ingresa email y contraseña"
+        android:text="Ingresa credenciales para registrarte"
         android:textSize="20sp"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="8dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nombre y Apellido"
+        android:background="@drawable/edittext_custom"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="30dp"
+        android:inputType="textPersonName"
+        android:textSize="15sp"
+        android:padding="15dp"/>/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -31,7 +42,7 @@
         android:background="@drawable/edittext_custom"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:inputType="textEmailAddress"
         android:textSize="15sp"
         android:padding="15dp"/>/>
@@ -39,6 +50,17 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Contraseña"
+        android:background="@drawable/edittext_custom"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="15dp"
+        android:inputType="textPassword"
+        android:textSize="15sp"
+        android:padding="15dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Repite Contraseñ"
         android:background="@drawable/edittext_custom"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
@@ -56,7 +78,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iniciar Sesion"
+            android:text="Registrarse"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="100dp"
@@ -64,10 +86,10 @@
             android:textColor="@color/white"/>
 
         <TextView
-            android:id="@+id/tv_go_to_register"
+            android:id="@+id/tv_go_to_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
+            android:text="Volver a Login"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"/>
 
