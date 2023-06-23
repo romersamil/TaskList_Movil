@@ -26,6 +26,7 @@
         android:layout_marginTop="8dp"/>
 
     <EditText
+        android:id="@+id/Name_Edit_Text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="25dp"
@@ -40,6 +41,7 @@
         android:textSize="15sp" />/>
 
     <EditText
+        android:id="@+id/Email_Edit_Text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="25dp"
@@ -54,6 +56,7 @@
         android:textSize="15sp" />/>
 
     <EditText
+        android:id="@+id/Password_Edit_Text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="25dp"
@@ -68,6 +71,7 @@
         android:textSize="15sp" />
 
     <EditText
+        android:id="@+id/Confir_Password_Edit_Text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="25dp"
@@ -88,14 +92,15 @@
         android:gravity="center_horizontal">
 
         <Button
+            android:id="@+id/Registrarse_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarse"
-            android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="100dp"
+            android:layout_marginRight="25dp"
             android:backgroundTint="@color/btn_color"
-            android:textColor="@color/white"/>
+            android:text="Registrarse"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/tv_go_to_login"
