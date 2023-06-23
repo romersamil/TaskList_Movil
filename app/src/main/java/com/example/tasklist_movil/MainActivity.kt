@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Greeting("Android")
 
-                    val intent = Intent(this@MainActivity, Prueba::class.java)
+                    val intent = Intent(this@MainActivity, Login::class.java)
                     startActivity(intent)
                 }
             }
