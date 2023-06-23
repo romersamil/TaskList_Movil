@@ -8,7 +8,7 @@ import android.widget.TextView
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_prueba)
+        setContentView(R.layout.activity_login)
 
         val tvGoRegister = findViewById<TextView>(R.id.tv_go_to_register)
         tvGoRegister.setOnClickListener{
