@@ -1,0 +1,20 @@
+trigger:
+  - master
+  - Dev
+  - QA
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: "Release"
+
+Steps:
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: test
+      projects: "**/*Test/*.ktproj"
+      arguments: "--configuration $(buildConfiguration)"
+
+  - script: dotnet build --configutation $(buildConfiguration)
+    displayName: "dotnet build $(dotnetConfiguration)"

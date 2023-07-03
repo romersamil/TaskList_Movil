@@ -14,22 +14,7 @@ import java.util.jar.Attributes.Name
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterBinding
-    private lateinit var firebaseAuth: FirebaseAuth
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_register)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        firebaseAuth = FirebaseAuth.getInstance()
-
-        binding.tvGoToLogin.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
-        }
-
+    fun registerUser(name: String, email: String, pass: String, confirmPass: String){
         binding.Registrarsebtn.setOnClickListener{
             val name = binding.NameEditText.text.toString()
             val email = binding.EmailEditText.text.toString()
@@ -64,9 +49,30 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    lateinit var binding: ActivityRegisterBinding
+    lateinit var firebaseAuth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //setContentView(R.layout.activity_register)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        firebaseAuth = FirebaseAuth.getInstance()
+
+        binding.tvGoToLogin.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
 
 
-    private fun goToLogin() {
+    }
+
+    fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    fun goToLogin() {
         val i = Intent(this, Login::class.java)
         startActivity(i)
     }
