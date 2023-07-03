@@ -15,14 +15,6 @@ class RestoreActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
-
-
-
     private fun goback(){
         val i = Intent(this, Login::class.java)
         startActivity(i)

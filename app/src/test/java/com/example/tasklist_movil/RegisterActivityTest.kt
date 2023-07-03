@@ -1,23 +1,40 @@
 package com.example.tasklist_movil
 
+import android.content.Context
 import android.content.Intent
+import androidx.test.ext.junit.rules.ActivityScenarioRule
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.ar.core.Config
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import io.mockk.MockKAnnotations
+import io.mockk.MockKStubScope
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 
 
 internal class RegisterActivityTest{
+    @get:Rule
+    val activityRule = ActivityScenarioRule(RegisterActivity::class.java)
 
     private lateinit var registerActivity: RegisterActivity
     private lateinit var mockFirebaseAuth: FirebaseAuth
 
+
+    @Mock
+    private lateinit var mockAuthResult: RegisterActivity
+
     @Before
     fun setup() {
+
         // Mock FirebaseAuth instance
         mockFirebaseAuth = mockk(relaxed = true)
         every { FirebaseAuth.getInstance() } returns mockFirebaseAuth
@@ -28,11 +45,6 @@ internal class RegisterActivityTest{
         registerActivity.binding = mockk(relaxed = true)
     }
 
-    @Before
-    fun onBefore(){
-        MockKAnnotations.init(this)
-    }
-
 
     @Test
     fun TestCheck(){
@@ -40,7 +52,9 @@ internal class RegisterActivityTest{
     }
 
     @Test
+
     fun testCreateUserWithEmailAndPassword_Successful() {
+
         // Mock input values
         val name = "John"
         val email = "john@example.com"
@@ -48,7 +62,9 @@ internal class RegisterActivityTest{
         val confirmPass = "password"
 
         // Mock FirebaseAuth createUserWithEmailAndPassword
+        val mockAuthResult = mockk<RegisterActivity>()
         every { mockFirebaseAuth.createUserWithEmailAndPassword(email, pass) } returns mockk()
+
 
         // Call the method to be tested
         registerActivity.registerUser(name, email, pass, confirmPass)
@@ -57,6 +73,7 @@ internal class RegisterActivityTest{
         verify { mockFirebaseAuth.createUserWithEmailAndPassword(email, pass) }
         verify { registerActivity.startActivity(any()) }
     }
+
 
     @Test
     fun testCreateUserWithEmailAndPassword_Failure() {
@@ -117,3 +134,4 @@ internal class RegisterActivityTest{
         verify { registerActivity.startActivity(mockIntent) }
     }
 }
+
