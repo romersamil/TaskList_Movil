@@ -2,6 +2,9 @@ package com.example.tasklist_movil
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.view.animation.AlphaAnimation
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -33,11 +36,31 @@ class Login : AppCompatActivity() {
                         val intent = Intent(this, Home::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        val ErroralCampo = findViewById<TextView>(R.id.ErrorAlIniciar)
+                        ErroralCampo.visibility = View.VISIBLE
+
+                        val fadeInAnimation = AlphaAnimation(0f, 1f)
+                        fadeInAnimation.duration = 1000 // Duración de la animación en milisegundos
+                        ErroralCampo.startAnimation(fadeInAnimation)
+
+                        ErroralCampo.postDelayed({
+                            ErroralCampo.visibility = View.GONE
+                        }, 3000)
                     }
                 }
             } else {
-                Toast.makeText(this, "HAY CAMPOS VACIOS", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "HAY CAMPOS VACIOS", Toast.LENGTH_SHORT).show()
+                val camposerror = findViewById<TextView>(R.id.ErrorCampos)
+                camposerror.visibility = View.VISIBLE
+
+                val fadeInAnimation = AlphaAnimation(0f, 1f)
+                fadeInAnimation.duration = 1000 // Duración de la animación en milisegundos
+                camposerror.startAnimation(fadeInAnimation)
+
+                camposerror.postDelayed({
+                    camposerror.visibility = View.GONE
+                }, 3000)
             }
         }
 

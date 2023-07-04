@@ -2,6 +2,10 @@ package com.example.tasklist_movil
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
+import android.view.animation.AlphaAnimation
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tasklist_movil.databinding.ActivityRegisterBinding
@@ -36,6 +40,7 @@ class RegisterActivity : AppCompatActivity() {
 
             registerUser(name, email, pass, confirmPass)
         }
+
     }
 
     fun registerUser(name: String, email: String, pass: String, confirmPass: String) {
@@ -50,10 +55,28 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
+                val errorTextView = findViewById<TextView>(R.id.errorTextView)
+                errorTextView.visibility = View.VISIBLE
+
+                val fadeInAnimation = AlphaAnimation(0f, 1f)
+                fadeInAnimation.duration = 500 // Duración de la animación en milisegundos
+                errorTextView.startAnimation(fadeInAnimation)
+
+                Handler().postDelayed({
+                    errorTextView.visibility = View.GONE
+                }, 3000)
             }
         } else {
-            Toast.makeText(this, "Existen campos vacíos", Toast.LENGTH_SHORT).show()
+            val errorblanco = findViewById<TextView>(R.id.ErrorBlanco)
+            errorblanco.visibility = View.VISIBLE
+
+            val fadeInAnimation = AlphaAnimation(0f, 1f)
+            fadeInAnimation.duration = 1000 // Duración de la animación en milisegundos
+            errorblanco.startAnimation(fadeInAnimation)
+
+            Handler().postDelayed({
+                errorblanco.visibility = View.GONE
+            }, 3000)
         }
     }
 
