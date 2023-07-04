@@ -6,15 +6,18 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  buildConfiguration: "Release"
-
-Steps:
-  - task: DotNetCoreCLI@2
+steps:
+  - task: UseJavaVersion@1
     inputs:
-      command: test
-      projects: "**/*Test/*.ktproj"
-      arguments: "--configuration $(buildConfiguration)"
+      version: "16"
 
-  - script: dotnet build --configutation $(buildConfiguration)
-    displayName: "dotnet build $(dotnetConfiguration)"
+  - task: Gradle@2
+    inputs:
+      workingDirectory: 'C:\Users\romer\Documents\ITLA\6to Cuatrimestre\Electiva 2 (DevOps)\pro'
+      tasks: "test"
+
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: "JUnit"
+      testResultsFiles: "**/build/test-results/**/*.xml"
+      failTaskOnFailedTests: true
