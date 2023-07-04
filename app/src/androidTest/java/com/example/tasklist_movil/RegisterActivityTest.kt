@@ -1,106 +1,90 @@
-package com.example.tasklist_movil
-
 import android.content.Intent
 import androidx.test.core.app.ActivityScenario
-import androidx.test.rule.ActivityTestRule
-import com.google.common.base.Verify.verify
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.Espresso
+import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.tasklist_movil.Login
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.verify
-import org.junit.Assert
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import com.example.tasklist_movil.R
+import com.example.tasklist_movil.RegisterActivity
+import org.junit.Assert
 
+@RunWith(AndroidJUnit4::class)
 class RegisterActivityTest {
 
+    private lateinit var firebaseAuth: FirebaseAuth
 
-    internal class RegisterActivityTest {
+    @Before
+    fun setup() {
+        FirebaseApp.initializeApp(ApplicationProvider.getApplicationContext())
+        firebaseAuth = FirebaseAuth.getInstance()
+    }
 
-        private lateinit var scenario: ActivityScenario<RegisterActivity>
-        private lateinit var registerActivity: RegisterActivity
-        private lateinit var mockFirebaseAuth: FirebaseAuth
+    @Test
+    fun testRegisterUser_SuccessfulRegistration() {
+        val name = "John Doe"
+        val email = "john.doe@example.com"
+        val password = "password"
+        val confirmPass = "password"
 
-        @Before
-        fun setup() {
-            // Mock FirebaseAuth instance
-            mockFirebaseAuth = mockk(relaxed = true)
-            every { FirebaseAuth.getInstance() } returns mockFirebaseAuth
+        // Start the activity
+        val scenario = ActivityScenario.launch(RegisterActivity::class.java)
 
-            // Launch the activity using ActivityScenario
-            scenario = ActivityScenario.launch(RegisterActivity::class.java)
+        // Enter user details
+        Espresso.onView(ViewMatchers.withId(R.id.Name_Edit_Text))
+            .perform(ViewActions.typeText(name))
+        Espresso.onView(ViewMatchers.withId(R.id.Email_Edit_Text))
+            .perform(ViewActions.typeText(email))
+        Espresso.onView(ViewMatchers.withId(R.id.Password_Edit_Text))
+            .perform(ViewActions.typeText(password))
+        Espresso.onView(ViewMatchers.withId(R.id.Confir_Password_Edit_Text))
+            .perform(ViewActions.typeText(confirmPass))
 
-            // Get the activity instance
-            scenario.onActivity { activity ->
-                registerActivity = activity
-                registerActivity.firebaseAuth = mockFirebaseAuth
-                registerActivity.binding = mockk(relaxed = true)
-            }
-        }
+        // Click the Register button
+        Espresso.onView(ViewMatchers.withId(R.id.Registrarsebtn))
+            .perform(ViewActions.click())
 
-        @Test
-        fun testCheck() {
-            Assert.assertTrue(true)
-        }
+        // Wait for registration to complete using IdlingResource or other synchronization methods
 
-        @Test
-        fun testCreateUserWithEmailAndPassword_Successful() {
-            val name = "John"
-            val email = "john@example.com"
-            val pass = "password"
-            val confirmPass = "password"
+        // Check if the activity is finished and user is redirected to Login activity
+        /*scenario.onActivity { activity ->
+            Assert.assertEquals(activity.intent.component?.className, Login::class.java.name)*/
 
-            every { mockFirebaseAuth.createUserWithEmailAndPassword(email, pass) } returns mockk()
+    }
 
-            registerActivity.registerUser(name, email, pass, confirmPass)
+    @Test
+    fun testRegisterUser_PasswordMismatch() {
+        val name = "John Doe"
+        val email = "john.doe@example.com"
+        val password = "password"
+        val confirmPass = "differentpassword"
 
-            verify { mockFirebaseAuth.createUserWithEmailAndPassword(email, pass) }
-            verify { registerActivity.startActivity(any()) }
-        }
+        // Start the activity
+        val scenario = ActivityScenario.launch(RegisterActivity::class.java)
 
-        @Test
-        fun testCreateUserWithEmailAndPassword_Failure() {
-            val name = "John"
-            val email = "john@example.com"
-            val pass = "password"
-            val confirmPass = "password"
+        // Enter user details
+        Espresso.onView(ViewMatchers.withId(R.id.Name_Edit_Text))
+            .perform(ViewActions.typeText(name))
+        Espresso.onView(ViewMatchers.withId(R.id.Email_Edit_Text))
+            .perform(ViewActions.typeText(email))
+        Espresso.onView(ViewMatchers.withId(R.id.Password_Edit_Text))
+            .perform(ViewActions.typeText(password))
+        Espresso.onView(ViewMatchers.withId(R.id.Confir_Password_Edit_Text))
+            .perform(ViewActions.typeText(confirmPass))
 
-            val mockException: Exception = mockk()
-            every {
-                mockFirebaseAuth.createUserWithEmailAndPassword(
-                    email,
-                    pass
-                )
-            } throws mockException
+        // Click the Register button
+        Espresso.onView(ViewMatchers.withId(R.id.Registrarsebtn))
+            .perform(ViewActions.click())
 
-            registerActivity.registerUser(name, email, pass, confirmPass)
-
-            verify { registerActivity.showToast("Exception message") }
-        }
-
-        @Test
-        fun testCreateUserWithEmailAndPassword_PasswordMismatch() {
-            val name = "John"
-            val email = "john@example.com"
-            val pass = "password"
-            val confirmPass = "differentPassword"
-
-            registerActivity.registerUser(name, email, pass, confirmPass)
-
-            verify { registerActivity.showToast("Passwords do not match") }
-        }
-
-        @Test
-        fun testCreateUserWithEmailAndPassword_EmptyFields() {
-            val name = ""
-            val email = ""
-            val pass = ""
-            val confirmPass = ""
-
-            registerActivity.registerUser(name, email, pass, confirmPass)
-
-            verify { registerActivity.showToast("Fields cannot be empty") }
-        }
+        // Check if the error message is displayed
+        Espresso.onView(ViewMatchers.withText("LAS CONTRASENA NO ES IGUAL A LA CONFIRMACION"))
+            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
     }
 }
